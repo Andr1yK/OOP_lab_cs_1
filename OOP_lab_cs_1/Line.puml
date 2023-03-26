@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Line
+
+class Line {
+- double _first
+- double _second
+- Line(double first, double second)
+
++ {static} bool Init(double first, double second)
+
++ double Root()
++ void Read()
++ void Display()
+}
+
+@enduml

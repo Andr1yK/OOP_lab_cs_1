@@ -14,10 +14,19 @@ namespace OOP_lab_cs_1
         private double _first;
         private double _second;
 
+        // setter and getter for First field with validation
         public double First
         {
             get => _first;
-            set => _first = value;
+            set
+            {
+                if (value == 0)
+                {
+                    throw new System.Exception("A is equal to zero.");
+                }
+                
+                _first = value;
+            }
         }
 
         public double Second
@@ -26,7 +35,7 @@ namespace OOP_lab_cs_1
             set => _second = value;
         }
 
-        public Line(double first, double second)
+        private Line(double first, double second)
         {
             _first = first;
             _second = second;
@@ -40,6 +49,31 @@ namespace OOP_lab_cs_1
             }
             
             return -_second / _first;
+        }
+        
+        // init method with arguments and check if A is not equal to zero.
+        public static Line Init(double first, double second)
+        {
+            if (first == 0)
+            {
+                throw new System.Exception("A is equal to zero.");
+            }
+
+            return new Line(first, second);
+        }
+
+        public void Display()
+        {
+            System.Console.WriteLine($"y = {_first} | x = {_second}");
+        }
+
+        public void Read()
+        {
+            System.Console.Write("Enter A: ");
+            _first = double.Parse(System.Console.ReadLine());
+            
+            System.Console.Write("Enter B: ");
+            _second = double.Parse(System.Console.ReadLine());
         }
     }
 }
